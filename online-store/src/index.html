@@ -15,7 +15,7 @@
         <div class="header__img"></div>
         <h1 class="header__title">Guitar-store</h1>
       </div>
-      <button class="header__basket button"></button>
+      <button class="header__cart button"></button>
     </div>
   </header>
 
@@ -34,9 +34,7 @@
         <div class="products__title-container">
           <h2 class="products__title">Products</h2>
         </div>
-        <div class="products__items">
-          
-        </div>
+        <div class="products__items" id="productsItems"></div>
         <div></div>
       </div>
     </section>
@@ -54,7 +52,21 @@
 
   <template id="goodItemTemp">
     <div class="products__item">
-
+      <img
+        alt="Product image"
+        class="products__item-image"
+        id="productImage"
+      >
+      <div class="products__item-info">
+        <h3 class="products__item-title" id="productTitle"></h3>
+        <ul class="products__item-features">
+          <li>Manufacturer : <span id="productManufacturer"></span></li>
+          <li>Year of release: <span id="productReleased"></span></li>
+          <li>Color: <span id="productColor"></span></li>
+          <li>Count: <span id="productCount"></span></li>
+        </ul>
+        <button class="add-to-cart-button button">Add to cart</button>
+      </div>
     </div>
   </template>
 </body>
