@@ -1,0 +1,176 @@
+@font-face {
+  font-family: 'Steppe';
+  src: url('./assets/fonts/Steppe.woff2') format('woff2'), /* Modern Browsers */
+       url('./assets/fonts/Steppe.otf') format('opentype'); /* Safari, Android, iOS */
+          font-style: normal;
+  font-weight: normal;
+  text-rendering: optimizeLegibility;
+}
+
+:root {
+  --height-header: 100px;
+  --height-footer: 70px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Steppe';
+  background-color: white;
+}
+
+.button {
+  border: none;
+  background-color: inherit;
+  cursor: pointer;
+}
+
+.container {
+  margin: 0 auto;
+  padding: 0 50px;
+  width: 1400px;
+}
+
+.header__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--height-header);
+}
+
+.header {
+  background-color: #004F44;
+}
+
+.header__logo {
+  display: flex;
+  align-items: center;
+  gap: 0.7em;
+}
+
+.header__img {
+  width: 70px;
+  height: 70px;
+  background-image: url(./assets/icons/guitar-logo.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.header__title {
+  color: white;
+}
+
+.header__basket {
+  width: 50px;
+  height: 50px;
+  background-image: url(./assets/icons/basket.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.content {
+  min-height: calc(100vh - var(--height-header) - var(--height-footer));
+}
+
+.search__container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1em;
+  height: 100px;
+}
+
+.search {
+  background-color: #F3FFFC;
+}
+
+.search__settings,
+.search__button {
+  width: 50px;
+  height: 50px;
+  background-size: 50%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.search__settings {
+  border: 2px solid #004F44;
+  background-image: url(./assets/icons/settings-searsh.png);
+}
+
+.search__field {
+  flex-grow: 1;
+  border: 2px solid #004F44;
+  padding: 0 20px;
+  height: 50px;
+  font-family: 'Steppe';
+  color: #004F44;
+  font-size: 1.5em;
+}
+
+.search__field::placeholder {
+  font-family: 'Steppe';
+  color: #004F44;
+}
+
+.search__button {
+  background-image: url(./assets/icons/searsh.png);
+  background-color: #004F44;
+}
+
+.products__container {
+  padding-top: 2em;
+}
+
+.products__title-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.products__title {
+  display: inline-block;
+  padding: 0 1rem;
+  font-size: 2.5em;
+  text-align: center;
+  color: #004F44;
+  background-color: white;
+}
+
+.products__title-container::before {
+  position: absolute;
+  content: '';
+  top: calc(50% - 3px);
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: #004F44;
+  z-index: -1;
+}
+
+.footer {
+  background-color: #004F44;
+}
+
+.footer__container {
+  display: flex;
+  align-items: center;
+  height: var(--height-footer);
+}
+
+.course-link {
+  display: flex;
+  padding: 0 0.6em;
+  margin: 0 1em 0 0;
+  border-radius: 10px;
+  background-color: white;
+}
+
+.website-author {
+  color: white;
+}

@@ -1,11 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Online-store</title>
+  <title>Guitar-store</title>
 </head>
+
 <body>
+  <header class="header">
+    <div class="container header__container">
+      <div class="header__logo">
+        <div class="header__img"></div>
+        <h1 class="header__title">Guitar-store</h1>
+      </div>
+      <button class="header__basket button"></button>
+    </div>
+  </header>
+
+  <div class="content">
+    <section class="search">
+      <form action="#">
+        <div class="container search__container">
+          <button class="search__settings button"></button>
+          <input class="search__field" type="text" placeholder="Search guitar...">
+          <button class="search__button button"></button>
+        </div>
+      </form>
+    </section>
+    <section class="products">
+      <div class="container products__container">
+        <div class="products__title-container">
+          <h2 class="products__title">Products</h2>
+        </div>
+        <div class="products__items">
+          
+        </div>
+        <div></div>
+      </div>
+    </section>
+  </div>
+
+  <footer class="footer">
+    <div class="container footer__container">
+      <a class="course-link" href="https://rs.school/js/">
+        <img class="course-logo" width="55px" height="40px" src="https://rs.school/images/rs_school_js.svg"
+          alt="Rss-course">
+      </a>
+      <a class="website-author" href="https://github.com/Fronikon">Dmitry Beresnev (Fronikon)</a>
+    </div>
+  </footer>
+
+  <template id="goodItemTemp">
+    <div class="products__item">
+
+    </div>
+  </template>
 </body>
+
 </html>
