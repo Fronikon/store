@@ -1,8 +1,8 @@
 @font-face {
   font-family: 'Steppe';
-  src: url('./assets/fonts/Steppe.woff2') format('woff2'), /* Modern Browsers */
-       url('./assets/fonts/Steppe.otf') format('opentype'); /* Safari, Android, iOS */
-          font-style: normal;
+  src: url('./assets/fonts/Steppe.woff2') format('woff2'),
+      url('./assets/fonts/Steppe.otf') format('opentype');
+  font-style: normal;
   font-weight: normal;
   text-rendering: optimizeLegibility;
 }
@@ -161,6 +161,7 @@ body {
 }
 
 .products__item {
+  position: relative;
   display: flex;
   padding: 2em 1em;
   box-shadow:
@@ -170,6 +171,22 @@ body {
     -1px 0 0 0 #e8e8e8,
     0 -1px 0 0 #e8e8e8;
   width: calc(100% / 3);
+}
+
+.popular::before {
+  position: absolute;
+  content: 'Top';
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.7em;
+  font-weight: bold;
+  box-shadow:
+    inset -1px 0 0 0 #e8e8e8,
+    inset 0 -1px 0 0 #e8e8e8;
+  background-color: yellow;
 }
 
 .products__item-image {

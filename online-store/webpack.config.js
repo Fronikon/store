@@ -42,7 +42,10 @@ const baseConfig = {
     output: {
         filename: 'index.js',
         path: path.resolve(__dirname, './dist'),
-        assetModuleFilename: 'assets/[hash][ext][query]'
+        assetModuleFilename: pathData => {
+            const filepath = path.dirname(pathData.filename).split('/').slice(1).join('/');
+            return `${filepath}/[hash][ext]`;
+        }
     },
     plugins: [
         new HtmlWebpackPlugin({
