@@ -1,5 +1,5 @@
 export type ProductsDataType = {
-  imgName: number,
+  imgName: string,
   name: string,
   manufacturer: string,
   year: number,

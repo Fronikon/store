@@ -1,0 +1,36 @@
+@font-face {
+  font-family: 'Steppe';
+  src: url('./assets/fonts/Steppe.woff2') format('woff2'),
+      url('./assets/fonts/Steppe.otf') format('opentype');
+  font-style: normal;
+  font-weight: normal;
+  text-rendering: optimizeLegibility;
+}
+
+:root {
+  --height-header: 100px;
+  --height-footer: 70px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Steppe';
+  background-color: white;
+}
+
+.button {
+  border: none;
+  background-color: inherit;
+  cursor: pointer;
+}
+
+.container {
+  margin: 0 auto;
+  padding: 0 50px;
+  width: 1400px;
+}

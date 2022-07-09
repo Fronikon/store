@@ -1,43 +1,39 @@
 {
-    "name": "online-store",
-    "version": "1.0.0",
-    "description": "",
-    "main": "webpack.base.config.js",
-    "scripts": {
-        "start": "webpack serve --open --config ./webpack.config.js --env mode=dev",
-        "build": "webpack --config ./webpack.config.js --env mode=prod",
-        "lint": "eslint . --ext .ts",
-        "deploy": "gh-pages -d dist",
-        "predeploy": "npm run build"
-    },
-    "repository": {
-        "type": "git",
-        "url": ""
-    },
-    "keywords": [],
-    "author": "Dmitry Beresnev",
-    "license": "ISC",
-    "homepage": "https://rolling-scopes-school.github.io/fronikon-JSFE2022Q1/",
-    "devDependencies": {
-        "@typescript-eslint/eslint-plugin": "^5.29.0",
-        "@typescript-eslint/parser": "^5.29.0",
-        "clean-webpack-plugin": "^3.0.0",
-        "copy-webpack-plugin": "^7.0.0",
-        "css-loader": "^5.1.0",
-        "eslint": "^7.27.0",
-        "eslint-config-prettier": "^8.3.0",
-        "eslint-plugin-import": "^2.23.3",
-        "eslint-plugin-prettier": "^3.4.0",
-        "gh-pages": "^4.0.0",
-        "html-loader": "^3.1.2",
-        "html-webpack-plugin": "^5.2.0",
-        "prettier": "2.2.1",
-        "style-loader": "^2.0.0",
-        "ts-loader": "^9.3.1",
-        "typescript": "^4.7.4",
-        "webpack": "^5.37.1",
-        "webpack-cli": "^4.5.0",
-        "webpack-dev-server": "^3.11.2",
-        "webpack-merge": "^5.7.3"
-    }
+  "name": "online-store",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@testing-library/jest-dom": "^5.16.4",
+    "@testing-library/react": "^13.3.0",
+    "@testing-library/user-event": "^13.5.0",
+    "@types/jest": "^27.5.2",
+    "@types/node": "^16.11.43",
+    "@types/react": "^18.0.15",
+    "@types/react-dom": "^18.0.6",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-scripts": "5.0.1",
+    "typescript": "^4.7.4",
+    "web-vitals": "^2.1.4"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "lint": "eslint . --ext .ts,.tsx",
+    "lint:fix": "npm run lint -- --fix"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
 }

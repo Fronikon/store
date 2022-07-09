@@ -2,7 +2,7 @@ import { ProductsDataType } from "./types/types";
 
 export const productsData: ProductsDataType[] = [
   {
-    imgName: 1,
+    imgName: '1',
     name: 'TF-3805A',
     manufacturer: 'TERRIS',
     year: 2013,
@@ -12,7 +12,7 @@ export const productsData: ProductsDataType[] = [
     isPopular: true
   },
   {
-    imgName: 2,
+    imgName: '2',
     name: 'LF-4000',
     manufacturer: 'Homage',
     year: 2013,
@@ -22,7 +22,7 @@ export const productsData: ProductsDataType[] = [
     isPopular: false
   },
   {
-    imgName: 3,
+    imgName: '3',
     name: 'FT-D38-RDS',
     manufacturer: 'Fante',
     year: 2020,
@@ -32,7 +32,7 @@ export const productsData: ProductsDataType[] = [
     isPopular: false
   },
   {
-    imgName: 4,
+    imgName: '4',
     name: 'BC3810 BK',
     manufacturer: 'Belucci',
     year: 2018,
@@ -42,7 +42,7 @@ export const productsData: ProductsDataType[] = [
     isPopular: true
   },
   {
-    imgName: 5,
+    imgName: '5',
     name: 'BC3810 WH',
     manufacturer: 'Belucci',
     year: 2018,
@@ -51,4 +51,4 @@ export const productsData: ProductsDataType[] = [
     fretsCount: 18,
     isPopular: true
   },
-]
+];
