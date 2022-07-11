@@ -1,3 +1,20 @@
+.alert-products-full {
+  position: fixed;
+  top: calc(5vh);
+  left: calc(50% - 300px / 2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 5px solid rgba(177, 23, 23, 0.801);
+  width: 300px;
+  height: 100px;
+  font-size: 25px;
+  font-weight: bold;
+  color: rgba(177, 23, 23, 0.801);
+  background-color: white;
+  z-index: 100;
+}
+
 .products__container {
   padding-top: 2em;
 }

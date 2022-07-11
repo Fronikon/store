@@ -60,10 +60,39 @@
   color: black
 }
 
-.add-to-cart-button {
+.control,
+.add-to-cart {
   margin: 0 0 0 auto;
   padding: 0.7em 1em;
+}
+
+.add-to-cart,
+.control__count-changer {
   font-size: 1em;
   color: white;
+}
+
+.add-to-cart {
+  margin: 0 0 0 auto;
+  padding: 0.7em 1em;
   background-color: #004F44;
+}
+
+.control__count-changer {
+  padding: 0.2em 0.5em;
+  border-radius: 5px;
+  font-weight: bold;
+  background-color: #004F44;
+}
+
+.control__count-product {
+  display: inline-block;
+  margin: 0 0.1em;
+  width: 1.5em;
+  text-align: center;
+}
+
+.disabled-button {
+  background-color: #618a84;
+  cursor: default;
 }

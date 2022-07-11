@@ -2,6 +2,7 @@ import { ProductsDataType } from "./types/types";
 
 export const productsData: ProductsDataType[] = [
   {
+    id: 1,
     imgName: '1',
     name: 'TF-3805A',
     manufacturer: 'TERRIS',
@@ -12,6 +13,7 @@ export const productsData: ProductsDataType[] = [
     isPopular: true
   },
   {
+    id: 2,
     imgName: '2',
     name: 'LF-4000',
     manufacturer: 'Homage',
@@ -22,6 +24,7 @@ export const productsData: ProductsDataType[] = [
     isPopular: false
   },
   {
+    id: 3,
     imgName: '3',
     name: 'FT-D38-RDS',
     manufacturer: 'Fante',
@@ -32,6 +35,7 @@ export const productsData: ProductsDataType[] = [
     isPopular: false
   },
   {
+    id: 4,
     imgName: '4',
     name: 'BC3810 BK',
     manufacturer: 'Belucci',
@@ -42,6 +46,7 @@ export const productsData: ProductsDataType[] = [
     isPopular: true
   },
   {
+    id: 5,
     imgName: '5',
     name: 'BC3810 WH',
     manufacturer: 'Belucci',
