@@ -4,13 +4,13 @@ import { OpenAlertType, ProductsDataType, ProductsInCartType, SetCounterProductT
 import { useState } from 'react';
 
 type PropsType = {
-  productsData: ProductsDataType[]
+  products: ProductsDataType[]
   setCounterProduct: SetCounterProductType
   isCartFull: boolean
   productsInCart: ProductsInCartType
 }
 
-export const Products: React.FC<PropsType> = ({productsData, setCounterProduct, isCartFull, productsInCart}) => {
+export const Products: React.FC<PropsType> = ({products, setCounterProduct, isCartFull, productsInCart}) => {
   const [isAlertOpen, setIsAlertOpen] = useState(false);
 
   const openAlert: OpenAlertType = () => {
@@ -31,10 +31,10 @@ export const Products: React.FC<PropsType> = ({productsData, setCounterProduct, 
         </div>
         <div className="products__items">
           {
-            productsData.map( (productData: ProductsDataType): React.ReactElement => {
+            products.map( (product: ProductsDataType): React.ReactElement => {
               return <Product
-                key={productData.id}
-                productData={productData}
+                key={product.id}
+                product={product}
                 setCounterProduct={setCounterProduct}
                 isCartFull={isCartFull}
                 productsInCart={productsInCart}
