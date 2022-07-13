@@ -28,3 +28,4 @@ export type OpenAlertType = () => void
 export type SetCounterProductType = (product: ProductsInCartType | null) => void
 export type ChangeFiltersType = (name: string, option: number[] | string[] | number | string | boolean) => void
 export type ChangeSortType = (method: string) => void
+export type ChangeSearchValueType = (value: string) => void

@@ -2,7 +2,7 @@ import './Content.css';
 import { FiltersSection } from './FiltersSection/FiltersSection';
 import { Products } from './Products/Products';
 import { productsData } from '../../productsData';
-import { ChangeFiltersType, ChangeSortType, FiltersType, ProductsInCartType, SetCounterProductType } from '../../types/types';
+import { ChangeFiltersType, ChangeSearchValueType, ChangeSortType, FiltersType, ProductsInCartType, SetCounterProductType } from '../../types/types';
 import { useState, useEffect } from 'react';
 
 type PropsType = {
@@ -15,6 +15,7 @@ export const Content: React.FC<PropsType> = ({ setCounterProduct, isCartFull, pr
   const [products, setProducts] = useState(productsData);
   const [filters, setFilters] = useState<FiltersType | null>(null);
   const [sort, setSort] = useState<string | null>(null);
+  const [search, setSearch] = useState<string>('');
 
   useEffect(() => {
     let newProducts = productsData;
@@ -50,6 +51,18 @@ export const Content: React.FC<PropsType> = ({ setCounterProduct, isCartFull, pr
         return true;
       });
     }
+
+    if (search !== '') {
+      newProducts = newProducts.filter((product) => {
+        const name = product.name.match(/\w/g)?.join('').toLowerCase();
+        const searchName = search.match(/\w/g)?.join('').toLowerCase();
+        if (name && searchName) {
+          return name?.includes(searchName);
+        }
+        return false;
+      });
+    }
+
     switch (sort) {
       case 'nameUp': {
         newProducts = [...newProducts].sort((a, b) => {
@@ -77,7 +90,7 @@ export const Content: React.FC<PropsType> = ({ setCounterProduct, isCartFull, pr
       }
     }
     setProducts(newProducts);
-  }, [filters, sort]);
+  }, [filters, sort, search]);
 
 
   const changeFilters: ChangeFiltersType = (name, option) => {
@@ -90,11 +103,16 @@ export const Content: React.FC<PropsType> = ({ setCounterProduct, isCartFull, pr
     setSort(method);
   };
 
+  const changeSearchValue: ChangeSearchValueType = (value) => {
+    setSearch(value);
+  };
+
   return (
     <div className="content">
       <FiltersSection
         changeFilters={changeFilters}
         changeSort={changeSort}
+        changeSearchValue={changeSearchValue}
         filters={filters}
       />
       <Products

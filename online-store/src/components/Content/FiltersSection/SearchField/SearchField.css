@@ -1,0 +1,19 @@
+.search-field__wrapper {
+  position: relative;
+  display: flex;
+  flex-grow: 1;
+  gap: 1em;
+}
+
+.search-field-clear {
+  position: absolute;
+  top: 1em;
+  right: 1em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  padding: 0 0.3em;
+  background-color: rgba(0, 0, 0, 0.123);
+  cursor: pointer;
+}
