@@ -3,6 +3,7 @@ import { ChangeFiltersType, ChangeSearchValueType, ChangeSortType, FiltersType }
 import { SortProducts } from './SortProducts/SortProducts';
 import { Filters } from './Filters/Filters';
 import { SearchField } from './SearchField/SearchField';
+import { useState } from 'react';
 
 type PropsType = {
   changeFilters: ChangeFiltersType
@@ -12,18 +13,31 @@ type PropsType = {
 }
 
 export const FiltersSection: React.FC<PropsType> = ({changeFilters, changeSort, changeSearchValue, filters}) => {
+  const [isFiltersOpen, setIsFiltersOpen] = useState(false);
+
+  const openCloseFilters = () => {
+    setIsFiltersOpen(!isFiltersOpen);
+  };
+
   return (
     <section className="search">
       <div className="container search__container">
         <div className='search__controls'>
-          <button className="search__settings button"></button>
+          <button
+            className="search__settings button"
+            onClick={openCloseFilters}
+          ></button>
           <SearchField changeSearchValue={changeSearchValue} />
           <SortProducts changeSort={changeSort} />
         </div>
-        <Filters
-          changeFilters={changeFilters}
-          filters={filters}
+        {
+          isFiltersOpen
+          && 
+          <Filters
+            changeFilters={changeFilters}
+            filters={filters}
         />
+        }
       </div>
     </section>
   );
