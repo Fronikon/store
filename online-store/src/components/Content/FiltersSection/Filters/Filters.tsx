@@ -9,9 +9,9 @@ type PropsType = {
   filters: FiltersType | null
 }
 
-const manufacturers = ['TERRIS', 'Homage', 'Fante', 'Belucci']
-const colors = ['Classic', 'White', 'Red', 'Black']
-const frets = ['18', '19', '20', '21', '22']
+const manufacturers = ['TERRIS', 'Homage', 'Fante', 'Belucci'];
+const colors = ['Classic', 'White', 'Red', 'Black'];
+const frets = ['18', '19', '20', '21', '22'];
 
 export const Filters: React.FC<PropsType> = ({ changeFilters, filters }) => {
   return (

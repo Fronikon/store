@@ -26,7 +26,7 @@ export const FilterByProperty: React.FC<PropsType> = ({ name, values, property, 
   const handleChange = (event: SelectChangeEvent<typeof someValue>) => {
     let value = event.target.value;
     value = typeof value === 'string' ? value.split(',') : value;
-    changeFilters(property, value)
+    changeFilters(property, value);
     setSomeValue(value);
   };
 

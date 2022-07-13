@@ -1,16 +1,15 @@
 import './FiltersSection.css';
-import { ChangeFiltersType, FiltersType, ProductsDataType } from '../../../types/types';
+import { ChangeFiltersType, ChangeSortType, FiltersType } from '../../../types/types';
 import { SortProducts } from './SortProducts/SortProducts';
 import { Filters } from './Filters/Filters';
 
 type PropsType = {
-  productsData: ProductsDataType[]
-  setProducts: React.Dispatch<React.SetStateAction<ProductsDataType[]>>
   changeFilters: ChangeFiltersType
+  changeSort: ChangeSortType
   filters: FiltersType | null
 }
 
-export const FiltersSection: React.FC<PropsType> = ({productsData, setProducts, changeFilters, filters}) => {
+export const FiltersSection: React.FC<PropsType> = ({changeFilters, changeSort, filters}) => {
   return (
     <section className="search">
       <div className="container search__container">
@@ -19,8 +18,7 @@ export const FiltersSection: React.FC<PropsType> = ({productsData, setProducts, 
           <input className="search__field" type="text" placeholder="Search guitar..." />
           <button className="search__button button"></button>
           <SortProducts
-            productsData={productsData}
-            setProducts={setProducts}
+            changeSort={changeSort}
           />
         </div>
         <Filters

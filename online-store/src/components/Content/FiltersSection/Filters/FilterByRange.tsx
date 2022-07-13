@@ -15,7 +15,7 @@ export const FilterByRange: React.FC<PropsType> = ({changeFilters, name, propert
   const [value, setValue] = useState<number[]>([initialValue[0], initialValue[1]]);
 
   const handleChange = (event: Event, newValue: number | number[]) => {
-    changeFilters(property, newValue)
+    changeFilters(property, newValue);
     setValue(newValue as number[]);
   };
 

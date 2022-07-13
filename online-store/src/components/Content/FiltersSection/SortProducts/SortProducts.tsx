@@ -1,58 +1,38 @@
-import './SortProducts.css';
 import { useState } from 'react';
-import { ProductsDataType } from '../../../../types/types';
+import { ChangeSortType } from '../../../../types/types';
+import { FormControl, InputLabel, Select, MenuItem, SelectChangeEvent } from '@mui/material';
 
 type PropsType = {
-  productsData: ProductsDataType[]
-  setProducts: React.Dispatch<React.SetStateAction<ProductsDataType[]>>
+  changeSort: ChangeSortType
 }
 
-export const SortProducts: React.FC<PropsType> = ({ productsData, setProducts }) => {
-  const [selectValue, setselectValue] = useState('None')
+export const SortProducts: React.FC<PropsType> = ({ changeSort }) => {
+  const [value, setValue] = useState<string>('None');
 
-  const sortProducts = (sort: string, data: ProductsDataType[]): ProductsDataType[] => {
-
-    switch (sort) {
-      case 'nameUp': {
-        return [...data].sort((a, b) => {
-          if (a.name < b.name) return 1;
-          if (a.name > b.name) return -1;
-          return 0;
-        })
-      }
-      case 'nameDown': {
-        return [...data].sort((a, b) => {
-          if (a.name > b.name) return 1;
-          if (a.name < b.name) return -1;
-          return 0;
-        })
-      }
-      case 'yearUp': {
-        return [...data].sort((a, b) => a.year - b.year)
-      }
-      case 'yearDown': {
-        return [...data].sort((a, b) => a.year - b.year).reverse()
-      }
-      default: {
-        return data
-      }
-    }
-  }
-
-  const onChange: React.ChangeEventHandler<HTMLSelectElement> = (event) => {
-    setselectValue(event.target.value)
-    setProducts(sortProducts(event.target.value, productsData))
-  }
+  const handleChange = (event: SelectChangeEvent) => {
+    const value = event.target.value;
+    changeSort(value);
+    setValue(value);
+  };
 
   return (
     <div>
-      <select className='sort' value={selectValue} onChange={onChange}>
-        <option value="None">None</option>
-        <option value="nameUp">Name ↑</option>
-        <option value="nameDown">Name ↓</option>
-        <option value="yearUp">Year ↑</option>
-        <option value="yearDown">Year ↓</option>
-      </select>
+      <FormControl sx={{ minWidth: 120 }}>
+        <InputLabel id="demo-simple-select-label">Sort</InputLabel>
+        <Select
+          labelId="demo-simple-select-label"
+          id="demo-simple-select"
+          value={value}
+          label="Sort"
+          onChange={handleChange}
+        >
+          <MenuItem value={'None'}>None</MenuItem>
+          <MenuItem value={'nameUp'}>Name ↑</MenuItem>
+          <MenuItem value={'nameDown'}>Name ↓</MenuItem>
+          <MenuItem value={'yearUp'}>Year ↑</MenuItem>
+          <MenuItem value={'yearDown'}>Year ↓</MenuItem>
+        </Select>
+      </FormControl>
     </div>
   );
 };

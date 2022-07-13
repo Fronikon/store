@@ -11,7 +11,7 @@ export const FilterByPopular: React.FC<PropsType> = ({property, changeFilters}) 
   const [isPopular, setIsPopular] = useState<boolean>(false);
 
   const handleChange = () => {
-    changeFilters(property, isPopular)
+    changeFilters(property, isPopular);
     setIsPopular(!isPopular);
   };
 
