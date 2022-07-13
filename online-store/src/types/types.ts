@@ -10,11 +10,20 @@ export type ProductsDataType = {
   isPopular: boolean
 }
 
-export type СhangeProductsCountType = () => void
-export type OpenAlertType = () => void
-export type SetCounterProductType = (product: ProductsInCartType | null) => void
+export type FiltersType = {
+  count?: number[]
+  year?: number[]
+  manufacturer?: string[]
+  color?: string[]
+  fretsCount?: string[]
+  isPopular?: boolean
+}
 
 export type ProductsInCartType = {
   [index: string]: number
 }
 
+export type СhangeProductsCountType = () => void
+export type OpenAlertType = () => void
+export type SetCounterProductType = (product: ProductsInCartType | null) => void
+export type ChangeFiltersType = (name: string, option: number[] | string[] | number | string | boolean) => void

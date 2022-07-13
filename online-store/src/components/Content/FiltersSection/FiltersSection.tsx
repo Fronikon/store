@@ -1,13 +1,16 @@
-import './Filter.css';
-import { ProductsDataType } from '../../../types/types';
+import './FiltersSection.css';
+import { ChangeFiltersType, FiltersType, ProductsDataType } from '../../../types/types';
 import { SortProducts } from './SortProducts/SortProducts';
+import { Filters } from './Filters/Filters';
 
 type PropsType = {
   productsData: ProductsDataType[]
   setProducts: React.Dispatch<React.SetStateAction<ProductsDataType[]>>
+  changeFilters: ChangeFiltersType
+  filters: FiltersType | null
 }
 
-export const Filter: React.FC<PropsType> = ({productsData, setProducts}) => {
+export const FiltersSection: React.FC<PropsType> = ({productsData, setProducts, changeFilters, filters}) => {
   return (
     <section className="search">
       <div className="container search__container">
@@ -20,6 +23,10 @@ export const Filter: React.FC<PropsType> = ({productsData, setProducts}) => {
             setProducts={setProducts}
           />
         </div>
+        <Filters
+          changeFilters={changeFilters}
+          filters={filters}
+        />
       </div>
     </section>
   );
