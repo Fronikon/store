@@ -10,7 +10,7 @@ type PropsType = {
   productsInCart: ProductsInCartType
 }
 
-export const Products: React.FC<PropsType> = ({products, setCounterProduct, isCartFull, productsInCart}) => {
+export const Products: React.FC<PropsType> = ({ products, setCounterProduct, isCartFull, productsInCart }) => {
   const [isAlertOpen, setIsAlertOpen] = useState(false);
 
   const openAlert: OpenAlertType = () => {
@@ -29,20 +29,27 @@ export const Products: React.FC<PropsType> = ({products, setCounterProduct, isCa
         <div className="products__title-container">
           <h2 className="products__title">Products</h2>
         </div>
-        <div className="products__items">
-          {
-            products.map( (product: ProductsDataType): React.ReactElement => {
-              return <Product
-                key={product.id}
-                product={product}
-                setCounterProduct={setCounterProduct}
-                isCartFull={isCartFull}
-                productsInCart={productsInCart}
-                openAlert={openAlert}
-              />;
-            })
-          }
-        </div>
+        {
+          products.length > 0
+            ? <div className="products__items">
+              {
+                products.map((product: ProductsDataType): React.ReactElement => {
+                  return <Product
+                    key={product.id}
+                    product={product}
+                    setCounterProduct={setCounterProduct}
+                    isCartFull={isCartFull}
+                    productsInCart={productsInCart}
+                    openAlert={openAlert}
+                  />;
+                })
+              }
+            </div>
+            : <h3 className='products-empty'>
+              Sorry, we couldn't find the products 😞
+            </h3>
+        }
+
       </div>
     </section>
   );
