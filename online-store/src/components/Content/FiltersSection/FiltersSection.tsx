@@ -8,11 +8,13 @@ import { useState } from 'react';
 type PropsType = {
   changeFilters: ChangeFiltersType
   changeSort: ChangeSortType
+  sort: string
   changeSearchValue: ChangeSearchValueType
-  filters: FiltersType | null
+  filters: FiltersType
+  clearFilters: () => void
 }
 
-export const FiltersSection: React.FC<PropsType> = ({changeFilters, changeSort, changeSearchValue, filters}) => {
+export const FiltersSection: React.FC<PropsType> = ({changeFilters, changeSort, sort, changeSearchValue, filters, clearFilters}) => {
   const [isFiltersOpen, setIsFiltersOpen] = useState(false);
 
   const openCloseFilters = () => {
@@ -28,7 +30,7 @@ export const FiltersSection: React.FC<PropsType> = ({changeFilters, changeSort, 
             onClick={openCloseFilters}
           ></button>
           <SearchField changeSearchValue={changeSearchValue} />
-          <SortProducts changeSort={changeSort} />
+          <SortProducts changeSort={changeSort} sort={sort} />
         </div>
         {
           isFiltersOpen
@@ -36,6 +38,7 @@ export const FiltersSection: React.FC<PropsType> = ({changeFilters, changeSort, 
           <Filters
             changeFilters={changeFilters}
             filters={filters}
+            clearFilters={clearFilters}
         />
         }
       </div>

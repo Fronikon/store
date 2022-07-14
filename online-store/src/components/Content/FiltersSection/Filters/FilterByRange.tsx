@@ -1,5 +1,5 @@
 import Slider from '@mui/material/Slider';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { ChangeFiltersType } from '../../../../types/types';
 
 type PropsType = {
@@ -13,6 +13,10 @@ type PropsType = {
 
 export const FilterByRange: React.FC<PropsType> = ({changeFilters, name, property, min, max, initialValue}) => {
   const [value, setValue] = useState<number[]>([initialValue[0], initialValue[1]]);
+
+  useEffect(() => {
+    setValue(initialValue);
+  }, [initialValue]);
 
   const handleChange = (event: Event, newValue: number | number[]) => {
     changeFilters(property, newValue);

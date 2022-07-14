@@ -1,23 +1,28 @@
 import { Checkbox, FormControlLabel } from '@mui/material';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { ChangeFiltersType } from '../../../../types/types';
 
 type PropsType = {
   property: string
   changeFilters: ChangeFiltersType
+  initialValue: boolean
 }
 
-export const FilterByPopular: React.FC<PropsType> = ({property, changeFilters}) => {
-  const [isPopular, setIsPopular] = useState<boolean>(false);
+export const FilterByPopular: React.FC<PropsType> = ({property, changeFilters, initialValue}) => {
+  const [isOnlyPopular, setIsOnlyPopular] = useState<boolean>(initialValue);
+
+  useEffect(() => {
+    setIsOnlyPopular(initialValue);
+  }, [initialValue]);
 
   const handleChange = () => {
-    changeFilters(property, isPopular);
-    setIsPopular(!isPopular);
+    changeFilters(property, !isOnlyPopular);
+    setIsOnlyPopular(!isOnlyPopular);
   };
 
   return (
     <div className='filter'>
-      <FormControlLabel control={<Checkbox onChange={handleChange} checked={isPopular} />} label="Only popular" />
+      <FormControlLabel control={<Checkbox onChange={handleChange} checked={isOnlyPopular} />} label="Only popular" />
     </div>
   );
 };

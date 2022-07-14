@@ -3,7 +3,8 @@ import { FiltersSection } from './FiltersSection/FiltersSection';
 import { Products } from './Products/Products';
 import { productsData } from '../../productsData';
 import { ChangeFiltersType, ChangeSearchValueType, ChangeSortType, FiltersType, ProductsInCartType, SetCounterProductType } from '../../types/types';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, memo } from 'react';
+import { getFiltersStorage, getSortStorage, setFiltersStorage, setSortStorage } from '../../localStorage/localStorage';
 
 type PropsType = {
   setCounterProduct: SetCounterProductType
@@ -11,46 +12,54 @@ type PropsType = {
   productsInCart: ProductsInCartType
 }
 
-export const Content: React.FC<PropsType> = ({ setCounterProduct, isCartFull, productsInCart }) => {
+const filtersData: FiltersType = {
+  count: [1, 100],
+  year: [1999, 2022],
+  manufacturer: [],
+  color: [],
+  fretsCount: [],
+  isOnlyPopular: false
+};
+
+export const Content: React.FC<PropsType> = memo(({ setCounterProduct, isCartFull, productsInCart }) => {
+
   const [products, setProducts] = useState(productsData);
-  const [filters, setFilters] = useState<FiltersType | null>(null);
-  const [sort, setSort] = useState<string | null>(null);
+  const [filters, setFilters] = useState<FiltersType>(filtersData);
+  const [sort, setSort] = useState<string>('none');
   const [search, setSearch] = useState<string>('');
+
+  useEffect(() => {
+    const sortResponse = getSortStorage();
+    if (sortResponse !== null) setSort( sortResponse );
+    
+    const filtersResponse = getFiltersStorage();
+    if (filtersResponse !== null) setFilters( filtersResponse );
+  }, []);
+
+  useEffect(() => {
+    window.onunload = () => {
+      setFiltersStorage(filters);
+      setSortStorage(sort);
+    };
+  }, [sort, filters]);
 
   useEffect(() => {
     let newProducts = productsData;
 
-    if (filters) {
-      newProducts = productsData.filter((product) => {
-        if (filters.count !== undefined) {
-          if (product.count < filters.count[0] || product.count > filters.count[1]) return false;
-        }
-        if (filters.year !== undefined) {
-          if (product.year < filters.year[0] || product.year > filters.year[1]) return false;
-        }
+    newProducts = productsData.filter((product) => {
+      if (product.count < filters.count[0] || product.count > filters.count[1]) return false;
+      if (product.year < filters.year[0] || product.year > filters.year[1]) return false;
 
-        if (filters.manufacturer !== undefined) {
-          if (filters.manufacturer.length !== 0) {
-            if (!filters.manufacturer.includes(product.manufacturer)) return false;
-          }
-        }
-        if (filters.color !== undefined) {
-          if (filters.color.length !== 0) {
-            if (!filters.color.includes(product.color)) return false;
-          }
-        }
-        if (filters.fretsCount !== undefined) {
-          if (filters.fretsCount.length !== 0) {
-            if (!filters.fretsCount.includes(String(product.fretsCount))) return false;
-          }
-        }
+      if (filters.manufacturer.length !== 0 &&
+        !filters.manufacturer.includes(product.manufacturer)) return false;
+      if (filters.color.length !== 0 &&
+        !filters.color.includes(product.color)) return false;
+      if (filters.fretsCount.length !== 0 &&
+        !filters.fretsCount.includes(String(product.fretsCount))) return false;
 
-        if (filters.isPopular !== undefined) {
-          if (!filters.isPopular && !product.isPopular) return false;
-        }
-        return true;
-      });
-    }
+      if (filters.isOnlyPopular && !product.isPopular) return false;
+      return true;
+    });
 
     if (search !== '') {
       newProducts = newProducts.filter((product) => {
@@ -89,22 +98,16 @@ export const Content: React.FC<PropsType> = ({ setCounterProduct, isCartFull, pr
         break;
       }
     }
+
     setProducts(newProducts);
   }, [filters, sort, search]);
 
+  const changeFilters: ChangeFiltersType = (name, option) => setFilters( { ...filters, [name]: option } );
+  const changeSort: ChangeSortType = (method) => setSort(method);
+  const changeSearchValue: ChangeSearchValueType = (value) => setSearch(value);
 
-  const changeFilters: ChangeFiltersType = (name, option) => {
-    let newFilters: FiltersType = { [name]: option };
-    if (filters) newFilters = { ...filters, [name]: option };
-    setFilters(newFilters);
-  };
-
-  const changeSort: ChangeSortType = (method) => {
-    setSort(method);
-  };
-
-  const changeSearchValue: ChangeSearchValueType = (value) => {
-    setSearch(value);
+  const clearFilters = () => {
+    setFilters(filtersData);
   };
 
   return (
@@ -112,8 +115,10 @@ export const Content: React.FC<PropsType> = ({ setCounterProduct, isCartFull, pr
       <FiltersSection
         changeFilters={changeFilters}
         changeSort={changeSort}
+        sort={sort}
         changeSearchValue={changeSearchValue}
         filters={filters}
+        clearFilters={clearFilters}
       />
       <Products
         products={products}
@@ -123,4 +128,4 @@ export const Content: React.FC<PropsType> = ({ setCounterProduct, isCartFull, pr
       />
     </div>
   );
-};
+});

@@ -1,18 +1,16 @@
-import { useState } from 'react';
 import { ChangeSortType } from '../../../../types/types';
 import { FormControl, InputLabel, Select, MenuItem, SelectChangeEvent } from '@mui/material';
 
 type PropsType = {
   changeSort: ChangeSortType
+  sort: string
 }
 
-export const SortProducts: React.FC<PropsType> = ({ changeSort }) => {
-  const [value, setValue] = useState<string>('None');
+export const SortProducts: React.FC<PropsType> = ({ changeSort, sort }) => {
 
   const handleChange = (event: SelectChangeEvent) => {
     const value = event.target.value;
     changeSort(value);
-    setValue(value);
   };
 
   return (
@@ -22,11 +20,11 @@ export const SortProducts: React.FC<PropsType> = ({ changeSort }) => {
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
-          value={value}
+          value={sort}
           label="Sort"
           onChange={handleChange}
         >
-          <MenuItem value={'None'}>None</MenuItem>
+          <MenuItem value={'none'}>None</MenuItem>
           <MenuItem value={'nameUp'}>Name ↑</MenuItem>
           <MenuItem value={'nameDown'}>Name ↓</MenuItem>
           <MenuItem value={'yearUp'}>Year ↑</MenuItem>

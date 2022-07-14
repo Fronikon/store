@@ -39,3 +39,24 @@
 .filter__wrapper {
   padding: 0 0 1em 0;
 }
+
+.reset-buttons {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 0 1em 0;
+}
+
+.reset-filters,
+.reset-all {
+  padding: 1em;
+  font-size: 1em;
+  color: white;
+}
+
+.reset-all {
+  background-color: #770404;
+}
+
+.reset-filters {
+  background-color: #004F44;
+}

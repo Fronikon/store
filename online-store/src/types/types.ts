@@ -11,12 +11,12 @@ export type ProductsDataType = {
 }
 
 export type FiltersType = {
-  count?: number[]
-  year?: number[]
-  manufacturer?: string[]
-  color?: string[]
-  fretsCount?: string[]
-  isPopular?: boolean
+  count: number[]
+  year: number[]
+  manufacturer: string[]
+  color: string[]
+  fretsCount: string[]
+  isOnlyPopular: boolean
 }
 
 export type ProductsInCartType = {

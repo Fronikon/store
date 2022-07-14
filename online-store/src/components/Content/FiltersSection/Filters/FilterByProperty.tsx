@@ -1,5 +1,5 @@
 import { Checkbox, FormControl, InputLabel, ListItemText, MenuItem, OutlinedInput, Select, SelectChangeEvent } from '@mui/material';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { ChangeFiltersType } from '../../../../types/types';
 
 type PropsType = {
@@ -7,6 +7,7 @@ type PropsType = {
   values: string[]
   property: string
   changeFilters: ChangeFiltersType
+  initialValue: string[]
 }
 
 const ITEM_HEIGHT = 48;
@@ -20,14 +21,18 @@ const MenuProps = {
   },
 };
 
-export const FilterByProperty: React.FC<PropsType> = ({ name, values, property, changeFilters }) => {
-  const [someValue, setSomeValue] = useState<string[]>([]);
+export const FilterByProperty: React.FC<PropsType> = ({ name, values, property, changeFilters, initialValue }) => {
+  const [value, setValue] = useState<string[]>(initialValue);
 
-  const handleChange = (event: SelectChangeEvent<typeof someValue>) => {
-    let value = event.target.value;
-    value = typeof value === 'string' ? value.split(',') : value;
-    changeFilters(property, value);
-    setSomeValue(value);
+  useEffect(() => {
+    setValue(initialValue);
+  }, [initialValue]);
+
+  const handleChange = (event: SelectChangeEvent<typeof value>) => {
+    let targetValue = event.target.value;
+    targetValue = typeof targetValue === 'string' ? targetValue.split(',') : targetValue;
+    changeFilters(property, targetValue);
+    setValue(targetValue);
   };
 
   return (
@@ -38,7 +43,7 @@ export const FilterByProperty: React.FC<PropsType> = ({ name, values, property, 
           labelId="demo-multiple-checkbox-label"
           id="demo-multiple-checkbox"
           multiple
-          value={someValue}
+          value={value}
           onChange={handleChange}
           input={<OutlinedInput label={name} />}
           renderValue={(selected: string[]) => selected.join(', ')}
@@ -46,7 +51,7 @@ export const FilterByProperty: React.FC<PropsType> = ({ name, values, property, 
         >
           {values.map((name) => (
             <MenuItem key={name} value={name}>
-              <Checkbox checked={someValue.indexOf(name) > -1} />
+              <Checkbox checked={value.indexOf(name) > -1} />
               <ListItemText primary={name} />
             </MenuItem>
           ))}
