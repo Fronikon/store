@@ -4,16 +4,13 @@ import { FilterByRange } from './FilterByRange';
 import { FilterByProperty } from './FilterByProperty';
 import { FilterByPopular } from './FilterByPopular';
 import { memo } from 'react';
+import { PROPERTIES_FILTERS } from '../../../../data/filtersData';
 
 type PropsType = {
   changeFilters: ChangeFiltersType
   filters: FiltersType
   clearFilters: () => void
 }
-
-const manufacturers = ['TERRIS', 'Homage', 'Fante', 'Belucci'];
-const colors = ['Classic', 'White', 'Red', 'Black'];
-const frets = ['18', '19', '20', '21', '22'];
 
 export const Filters: React.FC<PropsType> = memo(({ changeFilters, filters, clearFilters }) => {
 
@@ -49,21 +46,21 @@ export const Filters: React.FC<PropsType> = memo(({ changeFilters, filters, clea
           <FilterByProperty
             name={'Manufacturer'}
             property={'manufacturer'}
-            values={manufacturers}
+            values={PROPERTIES_FILTERS.manufacturers}
             changeFilters={changeFilters}
             initialValue={filters.manufacturer}
           />
           <FilterByProperty
             name={'Color'}
             property={'color'}
-            values={colors}
+            values={PROPERTIES_FILTERS.colors}
             changeFilters={changeFilters}
             initialValue={filters.color}
           />
           <FilterByProperty
             name={'Frets'}
             property={'fretsCount'}
-            values={frets}
+            values={PROPERTIES_FILTERS.frets}
             changeFilters={changeFilters}
             initialValue={filters.fretsCount}
           />

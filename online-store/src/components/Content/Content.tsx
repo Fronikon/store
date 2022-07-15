@@ -1,10 +1,11 @@
 import './Content.css';
 import { FiltersSection } from './FiltersSection/FiltersSection';
 import { Products } from './Products/Products';
-import { productsData } from '../../productsData';
 import { ChangeFiltersType, ChangeSearchValueType, ChangeSortType, FiltersType, ProductsInCartType, SetCounterProductType } from '../../types/types';
 import { useState, useEffect, memo } from 'react';
 import { getFiltersStorage, getSortStorage, setFiltersStorage, setSortStorage } from '../../localStorage/localStorage';
+import { PRODUCTS_DATA } from '../../data/productsData';
+import { INITIAL_FILTERS } from '../../data/filtersData';
 
 type PropsType = {
   setCounterProduct: SetCounterProductType
@@ -12,19 +13,10 @@ type PropsType = {
   productsInCart: ProductsInCartType
 }
 
-const filtersData: FiltersType = {
-  count: [1, 100],
-  year: [1999, 2022],
-  manufacturer: [],
-  color: [],
-  fretsCount: [],
-  isOnlyPopular: false
-};
-
 export const Content: React.FC<PropsType> = memo(({ setCounterProduct, isCartFull, productsInCart }) => {
 
-  const [products, setProducts] = useState(productsData);
-  const [filters, setFilters] = useState<FiltersType>(filtersData);
+  const [products, setProducts] = useState(PRODUCTS_DATA);
+  const [filters, setFilters] = useState<FiltersType>(INITIAL_FILTERS);
   const [sort, setSort] = useState<string>('none');
   const [search, setSearch] = useState<string>('');
 
@@ -44,9 +36,9 @@ export const Content: React.FC<PropsType> = memo(({ setCounterProduct, isCartFul
   }, [sort, filters]);
 
   useEffect(() => {
-    let newProducts = productsData;
+    let newProducts = PRODUCTS_DATA;
 
-    newProducts = productsData.filter((product) => {
+    newProducts = PRODUCTS_DATA.filter((product) => {
       if (product.count < filters.count[0] || product.count > filters.count[1]) return false;
       if (product.year < filters.year[0] || product.year > filters.year[1]) return false;
 
@@ -107,7 +99,7 @@ export const Content: React.FC<PropsType> = memo(({ setCounterProduct, isCartFul
   const changeSearchValue: ChangeSearchValueType = (value) => setSearch(value);
 
   const clearFilters = () => {
-    setFilters(filtersData);
+    setFilters(INITIAL_FILTERS);
   };
 
   return (
