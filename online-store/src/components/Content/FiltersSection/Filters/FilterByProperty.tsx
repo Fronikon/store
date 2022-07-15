@@ -1,5 +1,5 @@
 import { Checkbox, FormControl, InputLabel, ListItemText, MenuItem, OutlinedInput, Select, SelectChangeEvent } from '@mui/material';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, memo } from 'react';
 import { ChangeFiltersType } from '../../../../types/types';
 
 type PropsType = {
@@ -21,7 +21,7 @@ const MenuProps = {
   },
 };
 
-export const FilterByProperty: React.FC<PropsType> = ({ name, values, property, changeFilters, initialValue }) => {
+export const FilterByProperty: React.FC<PropsType> = memo(({ name, values, property, changeFilters, initialValue }) => {
   const [value, setValue] = useState<string[]>(initialValue);
 
   useEffect(() => {
@@ -59,4 +59,4 @@ export const FilterByProperty: React.FC<PropsType> = ({ name, values, property, 
       </FormControl>
     </div>
   );
-};
+});

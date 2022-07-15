@@ -1,13 +1,14 @@
 import './Header.css';
 import { Cart } from './Cart/Cart';
 import { SetCounterProductType } from '../../types/types';
+import { memo } from 'react';
 
 type PropsType = {
   countProductsInCart: number
   setCounterProduct: SetCounterProductType
 }
 
-export const Header: React.FC<PropsType> = ({countProductsInCart, setCounterProduct}) => {
+export const Header: React.FC<PropsType> = memo(({countProductsInCart, setCounterProduct}) => {
   return (
     <header className="header">
       <div className="container header__container">
@@ -22,4 +23,4 @@ export const Header: React.FC<PropsType> = ({countProductsInCart, setCounterProd
       </div>
     </header>
   );
-};
+});

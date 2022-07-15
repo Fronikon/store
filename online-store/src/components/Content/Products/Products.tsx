@@ -1,7 +1,7 @@
 import './Products.css';
 import { Product } from './Product/Product';
 import { OpenAlertType, ProductsDataType, ProductsInCartType, SetCounterProductType } from '../../../types/types';
-import { useState } from 'react';
+import { useState, memo } from 'react';
 
 type PropsType = {
   products: ProductsDataType[]
@@ -10,7 +10,7 @@ type PropsType = {
   productsInCart: ProductsInCartType
 }
 
-export const Products: React.FC<PropsType> = ({ products, setCounterProduct, isCartFull, productsInCart }) => {
+export const Products: React.FC<PropsType> = memo(({ products, setCounterProduct, isCartFull, productsInCart }) => {
   const [isAlertOpen, setIsAlertOpen] = useState(false);
 
   const openAlert: OpenAlertType = () => {
@@ -53,4 +53,4 @@ export const Products: React.FC<PropsType> = ({ products, setCounterProduct, isC
       </div>
     </section>
   );
-};
+});

@@ -1,13 +1,13 @@
 import './SearchField.css';
 import { TextField } from '@mui/material';
-import { ChangeEvent, useState } from 'react';
+import { ChangeEvent, useState, memo } from 'react';
 import { ChangeSearchValueType } from '../../../../types/types';
 
 type PropsType = {
   changeSearchValue: ChangeSearchValueType
 }
 
-export const SearchField: React.FC<PropsType> = ({ changeSearchValue }) => {
+export const SearchField: React.FC<PropsType> = memo(({ changeSearchValue }) => {
   const [value, setValue] = useState<string>('');
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -43,4 +43,4 @@ export const SearchField: React.FC<PropsType> = ({ changeSearchValue }) => {
       }
     </div>
   );
-};
+});

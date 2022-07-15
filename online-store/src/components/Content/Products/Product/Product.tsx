@@ -1,6 +1,6 @@
 import { OpenAlertType, ProductsDataType, ProductsInCartType, SetCounterProductType } from '../../../../types/types';
 import './Product.css';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, memo } from 'react';
 
 type TProps = {
   product: ProductsDataType
@@ -10,7 +10,7 @@ type TProps = {
   openAlert: OpenAlertType
 }
 
-export const Product: React.FC<TProps> = ( {product, setCounterProduct, isCartFull, productsInCart, openAlert} ) => {
+export const Product: React.FC<TProps> = memo(( {product, setCounterProduct, isCartFull, productsInCart, openAlert} ) => {
 
   const [countProductInCart, setCountProductInCart] = useState(0);
 
@@ -66,9 +66,7 @@ export const Product: React.FC<TProps> = ( {product, setCounterProduct, isCartFu
             >Add to cart</button>
           )
         }
-
-
       </div>
     </div>
   );
-};
+});

@@ -3,6 +3,7 @@ import { ChangeFiltersType, FiltersType } from '../../../../types/types';
 import { FilterByRange } from './FilterByRange';
 import { FilterByProperty } from './FilterByProperty';
 import { FilterByPopular } from './FilterByPopular';
+import { memo } from 'react';
 
 type PropsType = {
   changeFilters: ChangeFiltersType
@@ -14,7 +15,7 @@ const manufacturers = ['TERRIS', 'Homage', 'Fante', 'Belucci'];
 const colors = ['Classic', 'White', 'Red', 'Black'];
 const frets = ['18', '19', '20', '21', '22'];
 
-export const Filters: React.FC<PropsType> = ({ changeFilters, filters, clearFilters }) => {
+export const Filters: React.FC<PropsType> = memo(({ changeFilters, filters, clearFilters }) => {
 
   const clearLocalStorage = () => {
     window.onunload = () => {
@@ -79,4 +80,4 @@ export const Filters: React.FC<PropsType> = ({ changeFilters, filters, clearFilt
       </div>
     </div>
   );
-};
+});

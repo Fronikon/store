@@ -3,7 +3,7 @@ import { ChangeFiltersType, ChangeSearchValueType, ChangeSortType, FiltersType }
 import { SortProducts } from './SortProducts/SortProducts';
 import { Filters } from './Filters/Filters';
 import { SearchField } from './SearchField/SearchField';
-import { useState } from 'react';
+import { useState, memo } from 'react';
 
 type PropsType = {
   changeFilters: ChangeFiltersType
@@ -14,7 +14,7 @@ type PropsType = {
   clearFilters: () => void
 }
 
-export const FiltersSection: React.FC<PropsType> = ({changeFilters, changeSort, sort, changeSearchValue, filters, clearFilters}) => {
+export const FiltersSection: React.FC<PropsType> = memo(({changeFilters, changeSort, sort, changeSearchValue, filters, clearFilters}) => {
   const [isFiltersOpen, setIsFiltersOpen] = useState(false);
 
   const openCloseFilters = () => {
@@ -44,4 +44,4 @@ export const FiltersSection: React.FC<PropsType> = ({changeFilters, changeSort, 
       </div>
     </section>
   );
-};
+});

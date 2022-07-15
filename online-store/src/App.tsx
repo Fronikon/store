@@ -2,11 +2,11 @@ import './App.css';
 import { Header } from './components/Header/Header';
 import { Content } from './components/Content/Content';
 import { Footer } from './components/Footer/Footer';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, memo } from 'react';
 import { getProductsInCartStorage, removeProductsInCartStorage, setProductsInCartStorage } from './localStorage/localStorage';
 import { SetCounterProductType } from './types/types';
 
-export const App: React.FC = () => {
+export const App: React.FC = memo(() => {
   const [productsInCart, setProductsInCart] = useState( getProductsInCartStorage() );
   const [countProductsInCart, setCountProductsInCart] = useState(0);
   const [isCartFull, setIsCartFull] = useState(false);
@@ -41,4 +41,4 @@ export const App: React.FC = () => {
       <Footer />
     </div>
   );
-};
+});

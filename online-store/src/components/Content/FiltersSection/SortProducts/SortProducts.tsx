@@ -1,12 +1,13 @@
 import { ChangeSortType } from '../../../../types/types';
 import { FormControl, InputLabel, Select, MenuItem, SelectChangeEvent } from '@mui/material';
+import { memo } from 'react';
 
 type PropsType = {
   changeSort: ChangeSortType
   sort: string
 }
 
-export const SortProducts: React.FC<PropsType> = ({ changeSort, sort }) => {
+export const SortProducts: React.FC<PropsType> = memo(({ changeSort, sort }) => {
 
   const handleChange = (event: SelectChangeEvent) => {
     const value = event.target.value;
@@ -33,4 +34,4 @@ export const SortProducts: React.FC<PropsType> = ({ changeSort, sort }) => {
       </FormControl>
     </div>
   );
-};
+});

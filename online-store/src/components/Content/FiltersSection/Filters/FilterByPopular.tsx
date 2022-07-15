@@ -1,5 +1,5 @@
 import { Checkbox, FormControlLabel } from '@mui/material';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, memo } from 'react';
 import { ChangeFiltersType } from '../../../../types/types';
 
 type PropsType = {
@@ -8,7 +8,7 @@ type PropsType = {
   initialValue: boolean
 }
 
-export const FilterByPopular: React.FC<PropsType> = ({property, changeFilters, initialValue}) => {
+export const FilterByPopular: React.FC<PropsType> = memo(({property, changeFilters, initialValue}) => {
   const [isOnlyPopular, setIsOnlyPopular] = useState<boolean>(initialValue);
 
   useEffect(() => {
@@ -25,4 +25,4 @@ export const FilterByPopular: React.FC<PropsType> = ({property, changeFilters, i
       <FormControlLabel control={<Checkbox onChange={handleChange} checked={isOnlyPopular} />} label="Only popular" />
     </div>
   );
-};
+});

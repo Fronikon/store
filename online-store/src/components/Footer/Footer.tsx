@@ -1,6 +1,7 @@
 import './Footer.css';
+import { memo } from 'react';
 
-export const Footer: React.FC = () => {
+export const Footer: React.FC = memo(() => {
   return (
     <footer className="footer">
       <div className="container footer__container">
@@ -18,4 +19,4 @@ export const Footer: React.FC = () => {
       </div>
     </footer>
   );
-};
+});
