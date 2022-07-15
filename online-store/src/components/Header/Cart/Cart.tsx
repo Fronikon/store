@@ -13,12 +13,11 @@ export const Cart: React.FC<PropsType> = ({countProductsInCart, setCounterProduc
 
   return (
     <div className='cart'>
-        <span className='cart__count'>{countProductsInCart}</span>
         <button
           onClick={clear}
           className='cart__clear button'
         >Clear cart</button>
-        <div className="cart__img"></div>
+        <div className="cart__img"><span className='cart__count'>{countProductsInCart}</span></div>
     </div>
   );
 };

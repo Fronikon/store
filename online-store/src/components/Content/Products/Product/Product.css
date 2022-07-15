@@ -11,6 +11,17 @@
   width: calc(100% / 3);
 }
 
+@media (max-width: 1024px) {
+  .products__item {
+    width: calc(100% / 2);
+  }
+}
+@media (max-width: 768px) {
+  .products__item {
+    width: 100%;
+  }
+}
+
 .popular::before {
   position: absolute;
   content: 'Top';
@@ -30,6 +41,16 @@
 .products__item-image {
   width: 30%;
   object-fit: contain;
+}
+
+@media (max-width: 425px) {
+  .products__item {
+    flex-direction: column;
+  }
+  .products__item-image {
+    width: 100%;
+    height: 200px;
+  }
 }
 
 .products__item-title {

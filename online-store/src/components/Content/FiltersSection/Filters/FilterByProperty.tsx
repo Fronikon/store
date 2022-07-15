@@ -37,7 +37,7 @@ export const FilterByProperty: React.FC<PropsType> = ({ name, values, property, 
 
   return (
     <div className='filter'>
-      <FormControl sx={{ my: 1, width: 300 }}>
+      <FormControl sx={{ my: 1, width: '100%' }}>
         <InputLabel id="demo-multiple-checkbox-label">{name}</InputLabel>
         <Select
           labelId="demo-multiple-checkbox-label"
