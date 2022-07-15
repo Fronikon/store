@@ -14,6 +14,7 @@ export const Footer: React.FC = () => {
           />
         </a>
         <a className="website-author" href="https://github.com/Fronikon">Dmitry Beresnev (Fronikon)</a>
+        <span>2022</span>
       </div>
     </footer>
   );
