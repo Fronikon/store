@@ -1,44 +1,26 @@
 import { FiltersType, ProductsInCartType } from "../types/types";
 
-export const getProductsInCartStorage = (): ProductsInCartType => {
-  const gotProductsInCart = localStorage.getItem('productsInCart');
-  return gotProductsInCart !== null ? JSON.parse(gotProductsInCart) : {};
-};
+type setValueType = ProductsInCartType | FiltersType | string
 
-export const setProductsInCartStorage = (productsInCart: ProductsInCartType): void => {
-  localStorage.setItem('productsInCart', JSON.stringify(productsInCart));
-};
+class LocalStorageControll {
+  private name: string;
 
-export const removeProductsInCartStorage = (): void => {
-  localStorage.removeItem('productsInCart');
-};
-
-export const setFiltersStorage = (filters: FiltersType | null) => {
-  if (filters !== null) {
-    localStorage.setItem('filtersProducts', JSON.stringify(filters));
-  } else {
-    removeFiltersStorage();
+  constructor(name: string) {
+    this.name = name;
   }
-  localStorage.setItem('filtersProducts', JSON.stringify(filters));
-};
 
-export const getFiltersStorage = (): FiltersType | null => {
-  const resolve = localStorage.getItem('filtersProducts');
-  return resolve !== null ? JSON.parse(resolve) : null;
-};
-
-export const removeFiltersStorage = (): void => {
-  localStorage.removeItem('filtersProducts');
-};
-
-export const setSortStorage = (sort: string | null): void => {
-  if (sort !== null) {
-    localStorage.setItem('sortProducts', sort);
-  } else {
-    localStorage.removeItem('sortProducts');
+  public get() {
+    const resolve = localStorage.getItem(this.name);
+    return resolve !== null ? JSON.parse(resolve) : null;
   }
-};
+  public set(value: setValueType) {
+    localStorage.setItem(this.name, JSON.stringify(value));
+  }
+  public remove() {
+    localStorage.removeItem(this.name);
+  }
+}
 
-export const getSortStorage = (): string | null => {
-  return localStorage.getItem('sortProducts');
-};
+export const productsInCartInStorage = new LocalStorageControll('productsInCart');
+export const filtersInStorage = new LocalStorageControll('filtersProducts');
+export const sortInStorage = new LocalStorageControll('sortProducts');

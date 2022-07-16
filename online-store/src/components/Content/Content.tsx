@@ -1,11 +1,11 @@
 import './Content.css';
 import { FiltersSection } from './FiltersSection/FiltersSection';
 import { Products } from './Products/Products';
-import { ChangeFiltersType, ChangeSearchValueType, ChangeSortType, FiltersType, ProductsInCartType, SetCounterProductType } from '../../types/types';
+import { ChangeFiltersType, ChangeSearchValueType, ChangeSortType, FiltersType, ProductsDataType, ProductsInCartType, SetCounterProductType } from '../../types/types';
 import { useState, useEffect, memo } from 'react';
-import { getFiltersStorage, getSortStorage, setFiltersStorage, setSortStorage } from '../../localStorage/localStorage';
 import { PRODUCTS_DATA } from '../../data/productsData';
 import { INITIAL_FILTERS } from '../../data/filtersData';
+import { sortInStorage, filtersInStorage } from './../../localStorage/localStorage';
 
 type PropsType = {
   setCounterProduct: SetCounterProductType
@@ -15,30 +15,28 @@ type PropsType = {
 
 export const Content: React.FC<PropsType> = memo(({ setCounterProduct, isCartFull, productsInCart }) => {
 
-  const [products, setProducts] = useState(PRODUCTS_DATA);
+  const [products, setProducts] = useState<ProductsDataType[]>(PRODUCTS_DATA);
   const [filters, setFilters] = useState<FiltersType>(INITIAL_FILTERS);
   const [sort, setSort] = useState<string>('none');
   const [search, setSearch] = useState<string>('');
 
   useEffect(() => {
-    const sortResponse = getSortStorage();
+    const sortResponse: string | null = sortInStorage.get();
     if (sortResponse !== null) setSort( sortResponse );
-    
-    const filtersResponse = getFiltersStorage();
+
+    const filtersResponse: FiltersType | null = filtersInStorage.get();
     if (filtersResponse !== null) setFilters( filtersResponse );
   }, []);
 
   useEffect(() => {
     window.onunload = () => {
-      setFiltersStorage(filters);
-      setSortStorage(sort);
+      filtersInStorage.set(filters);
+      sortInStorage.set(sort);
     };
   }, [sort, filters]);
 
   useEffect(() => {
-    let newProducts = PRODUCTS_DATA;
-
-    newProducts = PRODUCTS_DATA.filter((product) => {
+    let newProducts: ProductsDataType[] = PRODUCTS_DATA.filter((product) => {
       if (product.count < filters.count[0] || product.count > filters.count[1]) return false;
       if (product.year < filters.year[0] || product.year > filters.year[1]) return false;
 
@@ -98,7 +96,7 @@ export const Content: React.FC<PropsType> = memo(({ setCounterProduct, isCartFul
   const changeSort: ChangeSortType = (method) => setSort(method);
   const changeSearchValue: ChangeSearchValueType = (value) => setSearch(value);
 
-  const clearFilters = () => {
+  const clearFilters = (): void => {
     setFilters(INITIAL_FILTERS);
   };
 

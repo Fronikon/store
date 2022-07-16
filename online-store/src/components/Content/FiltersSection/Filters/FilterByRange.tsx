@@ -18,8 +18,8 @@ export const FilterByRange: React.FC<PropsType> = memo(({changeFilters, name, pr
     setValue(initialValue);
   }, [initialValue]);
 
-  const handleChange = (event: Event, newValue: number | number[]) => {
-    changeFilters(property, newValue);
+  const handleChange = (event: Event, newValue: number | number[]): void => {
+    changeFilters<number | number[]>(property, newValue);
     setValue(newValue as number[]);
   };
 

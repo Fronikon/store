@@ -11,11 +11,11 @@ type PropsType = {
 }
 
 export const Products: React.FC<PropsType> = memo(({ products, setCounterProduct, isCartFull, productsInCart }) => {
-  const [isAlertOpen, setIsAlertOpen] = useState(false);
+  const [isAlertOpen, setIsAlertOpen] = useState<boolean>(false);
 
-  const openAlert: OpenAlertType = () => {
+  const openAlert: OpenAlertType = (): void => {
     setIsAlertOpen(true);
-    setTimeout(() => {
+    setTimeout((): void => {
       setIsAlertOpen(false);
     }, 2000);
   };
@@ -33,7 +33,7 @@ export const Products: React.FC<PropsType> = memo(({ products, setCounterProduct
           products.length > 0
             ? <div className="products__items">
               {
-                products.map((product: ProductsDataType): React.ReactElement => {
+                products.map((product: ProductsDataType): JSX.Element => {
                   return <Product
                     key={product.id}
                     product={product}

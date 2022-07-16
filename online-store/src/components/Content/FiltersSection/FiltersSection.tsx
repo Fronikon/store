@@ -15,11 +15,7 @@ type PropsType = {
 }
 
 export const FiltersSection: React.FC<PropsType> = memo(({changeFilters, changeSort, sort, changeSearchValue, filters, clearFilters}) => {
-  const [isFiltersOpen, setIsFiltersOpen] = useState(false);
-
-  const openCloseFilters = () => {
-    setIsFiltersOpen(!isFiltersOpen);
-  };
+  const [isFiltersOpen, setIsFiltersOpen] = useState<boolean>(false);
 
   return (
     <section className="search">
@@ -27,10 +23,13 @@ export const FiltersSection: React.FC<PropsType> = memo(({changeFilters, changeS
         <div className='search__controls'>
           <button
             className="search__settings button"
-            onClick={openCloseFilters}
+            onClick={ () => setIsFiltersOpen(!isFiltersOpen) }
           ></button>
           <SearchField changeSearchValue={changeSearchValue} />
-          <SortProducts changeSort={changeSort} sort={sort} />
+          <SortProducts
+            changeSort={changeSort}
+            sort={sort}
+          />
         </div>
         {
           isFiltersOpen

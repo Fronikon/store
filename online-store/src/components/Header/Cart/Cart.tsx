@@ -8,14 +8,10 @@ type PropsType = {
 }
 
 export const Cart: React.FC<PropsType> = memo(({countProductsInCart, setCounterProduct}) => {
-  const clear = () => {
-    setCounterProduct(null);
-  };
-
   return (
     <div className='cart'>
         <button
-          onClick={clear}
+          onClick={(): void => setCounterProduct(null)}
           className='cart__clear button'
         >Clear cart</button>
         <div className="cart__img"><span className='cart__count'>{countProductsInCart}</span></div>

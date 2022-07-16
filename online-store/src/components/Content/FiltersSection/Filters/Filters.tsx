@@ -5,6 +5,7 @@ import { FilterByProperty } from './FilterByProperty';
 import { FilterByPopular } from './FilterByPopular';
 import { memo } from 'react';
 import { PROPERTIES_FILTERS } from '../../../../data/filtersData';
+import { FilterName, FilterProperty, FilterRangeMax, FilterRangeMin } from '../../../../types/enums';
 
 type PropsType = {
   changeFilters: ChangeFiltersType
@@ -14,10 +15,8 @@ type PropsType = {
 
 export const Filters: React.FC<PropsType> = memo(({ changeFilters, filters, clearFilters }) => {
 
-  const clearLocalStorage = () => {
-    window.onunload = () => {
-      localStorage.clear();
-    };
+  const clearLocalStorage = (): void => {
+    window.onunload = (): void => localStorage.clear();
     window.location.reload();
   };
 
@@ -27,45 +26,45 @@ export const Filters: React.FC<PropsType> = memo(({ changeFilters, filters, clea
         <div className='filters__category'>
           <FilterByRange
             changeFilters={changeFilters}
-            name={'Count'}
-            property={'count'}
-            min={1}
-            max={100}
+            name={FilterName.count}
+            property={FilterProperty.count}
+            min={FilterRangeMin.count}
+            max={FilterRangeMax.count}
             initialValue={filters.count}
           />
           <FilterByRange
             changeFilters={changeFilters}
-            name={'Year'}
-            property={'year'}
-            min={1999}
-            max={2022}
+            name={FilterName.year}
+            property={FilterProperty.year}
+            min={FilterRangeMin.year}
+            max={FilterRangeMax.year}
             initialValue={filters.year}
           />
         </div>
         <div className='filters__category'>
           <FilterByProperty
-            name={'Manufacturer'}
-            property={'manufacturer'}
+            name={FilterName.manufacturer}
+            property={FilterProperty.manufacturer}
             values={PROPERTIES_FILTERS.manufacturers}
             changeFilters={changeFilters}
             initialValue={filters.manufacturer}
           />
           <FilterByProperty
-            name={'Color'}
-            property={'color'}
+            name={FilterName.color}
+            property={FilterProperty.color}
             values={PROPERTIES_FILTERS.colors}
             changeFilters={changeFilters}
             initialValue={filters.color}
           />
           <FilterByProperty
-            name={'Frets'}
-            property={'fretsCount'}
+            name={FilterName.frets}
+            property={FilterProperty.frets}
             values={PROPERTIES_FILTERS.frets}
             changeFilters={changeFilters}
             initialValue={filters.fretsCount}
           />
           <FilterByPopular
-            property={'isOnlyPopular'}
+            property={FilterProperty.isOnlyPopular}
             changeFilters={changeFilters}
             initialValue={filters.isOnlyPopular}
           />

@@ -10,13 +10,13 @@ type PropsType = {
 export const SearchField: React.FC<PropsType> = memo(({ changeSearchValue }) => {
   const [value, setValue] = useState<string>('');
 
-  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const value = event.target.value;
+  const handleChange = (event: ChangeEvent<HTMLInputElement>): void => {
+    const value: string = event.target.value;
     setValue(value);
     changeSearchValue(value);
   };
 
-  const clearField = () => {
+  const clearField = (): void => {
     setValue('');
     changeSearchValue('');
   };

@@ -28,10 +28,10 @@ export const FilterByProperty: React.FC<PropsType> = memo(({ name, values, prope
     setValue(initialValue);
   }, [initialValue]);
 
-  const handleChange = (event: SelectChangeEvent<typeof value>) => {
-    let targetValue = event.target.value;
+  const handleChange = (event: SelectChangeEvent<typeof value>): void => {
+    let targetValue: string | string[] = event.target.value;
     targetValue = typeof targetValue === 'string' ? targetValue.split(',') : targetValue;
-    changeFilters(property, targetValue);
+    changeFilters<string | string[]>(property, targetValue);
     setValue(targetValue);
   };
 
@@ -49,7 +49,7 @@ export const FilterByProperty: React.FC<PropsType> = memo(({ name, values, prope
           renderValue={(selected: string[]) => selected.join(', ')}
           MenuProps={MenuProps}
         >
-          {values.map((name) => (
+          {values.map((name: string): JSX.Element => (
             <MenuItem key={name} value={name}>
               <Checkbox checked={value.indexOf(name) > -1} />
               <ListItemText primary={name} />

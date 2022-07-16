@@ -15,14 +15,22 @@ export const FilterByPopular: React.FC<PropsType> = memo(({property, changeFilte
     setIsOnlyPopular(initialValue);
   }, [initialValue]);
 
-  const handleChange = () => {
-    changeFilters(property, !isOnlyPopular);
+  const handleChange = (): void => {
+    changeFilters<boolean>(property, !isOnlyPopular);
     setIsOnlyPopular(!isOnlyPopular);
   };
 
   return (
     <div className='filter'>
-      <FormControlLabel control={<Checkbox onChange={handleChange} checked={isOnlyPopular} />} label="Only popular" />
+      <FormControlLabel
+        control={
+          <Checkbox
+            onChange={handleChange}
+            checked={isOnlyPopular}
+          />
+        }
+        label="Only popular"
+      />
     </div>
   );
 });

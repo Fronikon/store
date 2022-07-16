@@ -9,9 +9,8 @@ type PropsType = {
 
 export const SortProducts: React.FC<PropsType> = memo(({ changeSort, sort }) => {
 
-  const handleChange = (event: SelectChangeEvent) => {
-    const value = event.target.value;
-    changeSort(value);
+  const handleChange = (event: SelectChangeEvent): void => {
+    changeSort(event.target.value);
   };
 
   return (
