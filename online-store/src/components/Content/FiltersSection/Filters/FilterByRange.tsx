@@ -27,7 +27,10 @@ export const FilterByRange: React.FC<PropsType> = memo(({changeFilters, name, pr
     <div className='filter'>
       <h3 className='filter__title'>{name}:</h3>
       <div className='filter__wrapper'>
-        <div className='filter__display'>{value[0]}</div>
+        <div
+          className='filter__display'
+          data-testid="cur-min-year"
+        >{value[0]}</div>
         <Slider
           value={value}
           onChange={handleChange}
@@ -35,7 +38,10 @@ export const FilterByRange: React.FC<PropsType> = memo(({changeFilters, name, pr
           min={min}
           max={max}
         />
-        <div className='filter__display'>{value[1]}</div>
+        <div
+          className='filter__display'
+          data-testid="cur-max-year"
+          >{value[1]}</div>
       </div>
     </div>
   );

@@ -13,8 +13,11 @@ export const Cart: React.FC<PropsType> = memo(({countProductsInCart, setCounterP
         <button
           onClick={(): void => setCounterProduct(null)}
           className='cart__clear button'
+          data-testid="clear-count-products"
         >Clear cart</button>
-        <div className="cart__img"><span className='cart__count'>{countProductsInCart}</span></div>
+        <div className="cart__img"><span
+          className='cart__count'
+          data-testid="count-products">{countProductsInCart}</span></div>
     </div>
   );
 });

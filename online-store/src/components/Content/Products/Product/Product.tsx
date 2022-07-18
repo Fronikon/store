@@ -51,11 +51,16 @@ export const Product: React.FC<TProps> = memo(( {product, setCounterProduct, isC
               <button
                 onClick={decreaseCount}
                 className="control__count-changer button"
+                data-testid="count-product-decrease"
               >-</button>
-              <span className='control__count-product'>{countProductInCart}</span>
+              <span
+                className='control__count-product'
+                data-testid="count-product"
+              >{countProductInCart}</span>
               <button
                 onClick={!isCartFull ? increaseCount : openAlert}
                 className={`control__count-changer button${isCartFull ? ' disabled-button' : ''}`}
+                data-testid="count-product-increase"
               >+</button>
             </div>
           ) :
@@ -63,6 +68,7 @@ export const Product: React.FC<TProps> = memo(( {product, setCounterProduct, isC
             <button
               onClick={!isCartFull ? increaseCount : openAlert}
               className={`add-to-cart button${isCartFull ? ' disabled-button' : ''}`} 
+              data-testid="count-product-increase"
             >Add to cart</button>
           )
         }
