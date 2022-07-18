@@ -5,16 +5,19 @@
 }
 
 .filters .filters__category:first-child {
-  flex-grow: 3;
+  flex-grow: 1;
 }
 
 .filters .filters__category:last-child {
-  flex-grow: 1;
+  width: 30%;
 }
 
 @media (max-width: 760px) {
   .filters {
     flex-direction: column;
+  }
+  .filters .filters__category:last-child {
+    width: auto;
   }
 }
 
