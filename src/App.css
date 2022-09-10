@@ -1,0 +1,61 @@
+@font-face {
+  font-family: 'Steppe';
+  src: url('./assets/fonts/Steppe.woff2') format('woff2'),
+      url('./assets/fonts/Steppe.otf') format('opentype');
+  font-style: normal;
+  font-weight: normal;
+  text-rendering: optimizeLegibility;
+}
+
+:root {
+  --height-header: 100px;
+  --height-footer: 70px;
+}
+
+@media (max-width: 425px) {
+  :root {
+    --height-header: 125px;
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Steppe';
+  background-color: white;
+}
+
+.button {
+  border: none;
+  background-color: inherit;
+  cursor: pointer;
+}
+
+.button:hover {
+  opacity: 0.9;
+}
+.button:active {
+  opacity: 0.7;
+}
+
+.container {
+  margin: 0 auto;
+  padding: 0 50px;
+  max-width: 1400px;
+  overflow: hidden;
+}
+
+@media (max-width: 1024px) {
+  .container {
+    padding: 0 30px;
+  }
+}
+@media (max-width: 768px) {
+  .container {
+    padding: 0 20px;
+  }
+}

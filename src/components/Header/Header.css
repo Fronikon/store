@@ -1,0 +1,39 @@
+.header__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--height-header);
+}
+
+.header {
+  background-color: #004F44;
+}
+
+.header__logo {
+  display: flex;
+  align-items: center;
+  gap: 0.7em;
+}
+
+.header__img {
+  padding: 2em;
+  background-image: url(../../assets/icons/guitar-logo.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.header__title {
+  color: white;
+}
+
+@media (max-width: 500px) {
+  .header__img {
+    padding: 1.5em;
+  }
+  .header__logo {
+    flex-direction: column;
+  }
+  .header__title {
+    font-size: 1em;
+  }
+}
